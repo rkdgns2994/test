@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 	회원가입 폼에서  입력한 데이터를 가져올 씨 한글 데이터가 깨지지 않도록 인코딩 처리한다.
+// 	입력한 데이터를 가져올 씨 한글 데이터가 깨지지 않도록 인코딩 처리한다.
 	request.setCharacterEncoding("UTF-8");
 
 //	회원가입 폼에서 입력한 데이터를 가져온다.
