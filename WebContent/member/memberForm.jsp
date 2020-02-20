@@ -54,6 +54,7 @@
 	</script>
 </head>
 <body>
+<center>
 	<form action='<%=request.getContextPath()%>/member/insertMember.jsp' method='POST'>
 		<table border = 1>
 			<tr>
@@ -101,6 +102,6 @@
 			</tr>
 		</table>
 	</form>
-
+</center>
 </body>
 </html>
