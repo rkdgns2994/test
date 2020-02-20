@@ -1,4 +1,3 @@
-
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -9,16 +8,21 @@
     pageEncoding="UTF-8"%>
     
 <%
-	String mem_id = null;
+//	회원가입 폼에서  입력한 데이터를 가져올 씨 한글 데이터가 깨지지 않도록 인코딩 처리한다.
+	request.setCharacterEncoding("UTF-8");
 
-// 		if((session.getAttribute("mem_id") == null) ||
-// 		  (!((String)session.getAttribute("mem_id")).equals("a001"))){
-// 			out.println("<Script>");	
-// 			out.println("location.href='loginForm.jsp'");	
-// 			out.println("</Script>");	
-// 		}
+	String mem_id = null;
 	
-	String delete_id = request.getParameter("mem_id");
+	if((session.getAttribute("mem_id")==null) ||
+		(!((String)session.getAttribute("mem_id")).equals("a001"))){
+		out.println("<script>");
+		out.println("location.href='memberList.jsp'");
+		out.println("alert('관리자만 탈퇴 시킬 수 있습니다.')");
+		out.println("</script>");
+	}
+	
+// 	삭제할 아이디에 변수를 저장
+	String delete_id = request.getParameter("mem_id");	
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -26,27 +30,18 @@
 	
 	try{
 		Context init = new InitialContext();
-		DataSource ds = 
-					(DataSource)init.lookup("java:comp/env/jdbc/OracleDB");
+		DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/OracleDB");
 		conn = ds.getConnection();
 		
+// 		member 테이블에서 변수에 저장해두었던 아이디 삭제
 		pstmt = conn.prepareStatement("delete from SCOTT.MEMBER where MEM_ID=?");
 		pstmt.setString(1, delete_id);
+		pstmt.executeUpdate();	
 		
-		int result = pstmt.executeUpdate();
-
-// 		레코드가 삭제되면 로그인 폼으로 이동, 그렇지 않으면 다시 회원리스트 폼으로 이동.
-		if(result!=0){
-				out.println("<script>");	
-				out.println("location.href='loginForm.jsp'");	
-				out.println("alert('정상 삭제되었습니다:)')");	
-				out.println("</script>");	
-		}else{
-				out.println("<script>");	
-				out.println("location.href='memberList.jsp'");	
-				out.println("alert('삭제에 실패하였습니다.:/')");
-				out.println("</script>");
-		}	
+		out.println("<script>");
+		out.println("location.href='memberList.jsp'");
+		out.println("alert('탈퇴 되었습니다.')");
+		out.println("</script>");
 		
 	}catch(Exception e){
 		e.printStackTrace();
