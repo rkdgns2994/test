@@ -9,12 +9,12 @@
 <%
 	String mem_id = null;
 	
-// 	if((session.getAttribute("mem_id") == null) ||
-// 			(!((String)session.getAttribute("mem_id")).equals("a001"))){
-// 		out.println("<Script>");	
-// 		out.println("location.href='loginForm.jsp'");	
-// 		out.println("</Script>");	
-// 	}
+	if((session.getAttribute("mem_id") == null) ||
+			(!((String)session.getAttribute("mem_id")).equals("a001"))){
+		out.println("<Script>");	
+		out.println("location.href='memberList.jsp'");	
+		out.println("</Script>");	
+	}
 	
 	String info_id = request.getParameter("mem_id");
 	
@@ -46,9 +46,6 @@
 <script src='http://code.jquery.com/jquery-latest.js'></script>
 <script>
 	$(function(){
-		$('input[value=회원탈퇴]').click(function(){
-			$(location).attr('href', '<%=request.getContextPath()%>/member/deleteMember.jsp?mem_id=?');
-		});
 		
 		$('input[value=회원목록]').click(function(){
 			$(location).attr('href', '<%=request.getContextPath()%>/member/memberList.jsp');
@@ -90,8 +87,9 @@
 			<td><input type='text' name='mem_job' value="<%=rs.getString("mem_job")%>" /></td>
 		</tr>
 		<tr>
-			<td colspan='2'><input type='submit' value='회원정보수정' /> 
-			<input type='button' value='회원탈퇴' /> <input type='button' value='회원목록' />
+			<td colspan='2'>
+				<input type='submit' value='회원정보수정' /> 
+				<input type='button' value='회원목록' />
 			</td>
 		</tr>
 	</table>
