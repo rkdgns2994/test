@@ -8,14 +8,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	String mem_id = null;
-	
-	if((session.getAttribute("mem_id") == null) ||
-			(!((String)session.getAttribute("mem_id")).equals("a001"))){
-		out.println("<Script>");	
-		out.println("location.href='memberList.jsp'");	
-		out.println("</Script>");	
-	}
-	
 	String info_id = request.getParameter("mem_id");
 	
 	Connection conn = null;
@@ -46,7 +38,6 @@
 <script src='http://code.jquery.com/jquery-latest.js'></script>
 <script>
 	$(function(){
-		
 		$('input[value=회원목록]').click(function(){
 			$(location).attr('href', '<%=request.getContextPath()%>/member/memberList.jsp');
 		});
