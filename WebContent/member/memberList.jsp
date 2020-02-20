@@ -9,14 +9,6 @@
 
 <%	
  	String mem_id = null;
-
-	if((session.getAttribute("mem_id") == null) ||
-	  (!((String)session.getAttribute("mem_id")).equals("a001"))){
-		out.println("<Script>");	
-		out.println("location.href='loginForm.jsp'");
-		out.println("alert('관리자만 접근 할 수 있습니다.')");
-		out.println("</Script>");	
-	}
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -71,7 +63,12 @@
 <body>
 <center>
 	<table border = 1>
-		<input type="button" value="뒤로가기" onclick="location.href='<%=request.getContextPath()%>/member/loginForm.jsp'"/>
+		 <tr bgcolor="blue" align ="center">
+			<th colspan = "10" span style="color:white">회원현황</th>
+    	</tr>
+		<tr>
+			<td><a href="<%=request.getContextPath()%>/member/loginForm.jsp" style="color:black;">로그아웃</a></td>
+		</tr>
 		<tr>
 			<th>아이디</th>
 			<th>이름</th>
