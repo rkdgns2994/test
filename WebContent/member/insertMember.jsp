@@ -26,7 +26,6 @@
 	ResultSet rs = null;
 	
 	try{
-		
 		Context init = new InitialContext();	
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 		conn = ds.getConnection();
