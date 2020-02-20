@@ -8,16 +8,6 @@
     pageEncoding="UTF-8"%>
 <%
 		request.setCharacterEncoding("UTF-8");
-
-// 		String mem_id = request.getParameter("MEM_ID");
-// 		String mem_pass = request.getParameter("MEM_PASS");
-// 		String mem_name = request.getParameter("MEM_NAME");
-// 		String mem_bir = request.getParameter("MEM_BIR");
-// 		String mem_add1 = request.getParameter("MEM_ADD1");
-// 		String mem_add2 = request.getParameter("MEM_ADD2");
-// 		String mem_hp = request.getParameter("MEM_HP");
-// 		String mem_mail = request.getParameter("MEM_MAIL");
-// 		String mem_job = request.getParameter("MEM_JOB");
 		
 		String mem_id = request.getParameter("mem_id");
 		String mem_pass = request.getParameter("mem_pass");
@@ -44,16 +34,6 @@
 										  +    "MEM_HP=?, MEM_MAIL=?, MEM_JOB=?"
 										  + "where MEM_ID=?");
 			
-// 			pstmt.setString(1, rs.getString("MEM_PASS"));
-// 			pstmt.setString(2, rs.getString("MEM_NAME"));
-// 			pstmt.setString(3, rs.getString("MEM_BIR"));
-// 			pstmt.setString(4, rs.getString("MEM_ADD1"));
-// 			pstmt.setString(5, rs.getString("MEM_ADD2"));
-// 			pstmt.setString(6, rs.getString("MEM_HP"));
-// 			pstmt.setString(7, rs.getString("MEM_MAIL"));
-// 			pstmt.setString(8, rs.getString("MEM_JOB"));
-// 			pstmt.setString(9, rs.getString("MEM_ID"));
-			
 			pstmt.setString(1, rs.getString("mem_pass"));
 			pstmt.setString(2, rs.getString("mem_name"));
 			pstmt.setString(3, rs.getString("mem_bir"));
@@ -63,28 +43,8 @@
 			pstmt.setString(7, rs.getString("mem_mail"));
 			pstmt.setString(8, rs.getString("mem_job"));
 			pstmt.setString(9, rs.getString("mem_id"));
-			
-// 			pstmt.setString(1, "MEM_PASS");
-// 			pstmt.setString(2, "MEM_NAME");
-// 			pstmt.setString(3, "MEM_BIR");
-// 			pstmt.setString(4, "MEM_ADD1");
-// 			pstmt.setString(5, "MEM_ADD2");
-// 			pstmt.setString(6, "MEM_HP");
-// 			pstmt.setString(7, "MEM_MAIL");
-// 			pstmt.setString(8, "MEM_JOB");
-// 			pstmt.setString(9, "MEM_ID");
-
-// 			pstmt.setString(1, mem_pass);
-// 			pstmt.setString(2, mem_name);
-// 			pstmt.setString(3, mem_bir);
-// 			pstmt.setString(4, mem_add1);
-// 			pstmt.setString(5, mem_add2);
-// 			pstmt.setString(6, mem_hp);
-// 			pstmt.setString(7, mem_mail);
-// 			pstmt.setString(8, mem_job);
-// 			pstmt.setString(9, mem_id);
-// 			pstmt.executeUpdate();
-// 			rs.next();
+			pstmt.executeUpdate();
+			rs.next();
 			
 			int result = pstmt.executeUpdate();
 
