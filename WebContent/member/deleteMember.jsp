@@ -13,13 +13,18 @@
 
 	String mem_id = null;
 	
-	if((session.getAttribute("mem_id")==null) ||
-		(!((String)session.getAttribute("mem_id")).equals("a001"))){
+	if((!((String)session.getAttribute("mem_id")).equals("a001"))){
 		out.println("<script>");
 		out.println("location.href='memberList.jsp'");
-		out.println("alert('관리자만 탈퇴 시킬 수 있습니다.')");
+		out.println("alert('관리자만 사용 할 수 있습니다.')");
+		out.println("</script>");
+	}else if((((String)session.getAttribute("mem_id")).equals("a001"))){
+		out.println("<script>");
+		out.println("location.href='memberList.jsp'");
+		out.println("alert('탈퇴 되었습니다.')");
 		out.println("</script>");
 	}
+	
 	
 // 	삭제할 아이디에 변수를 저장
 	String delete_id = request.getParameter("mem_id");	
@@ -37,11 +42,6 @@
 		pstmt = conn.prepareStatement("delete from SCOTT.MEMBER where MEM_ID=?");
 		pstmt.setString(1, delete_id);
 		pstmt.executeUpdate();	
-		
-		out.println("<script>");
-		out.println("location.href='memberList.jsp'");
-		out.println("alert('탈퇴 되었습니다.')");
-		out.println("</script>");
 		
 	}catch(Exception e){
 		e.printStackTrace();
