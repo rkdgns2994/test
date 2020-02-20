@@ -78,7 +78,6 @@
 			<th>휴대폰번호</th>
 			<th>이메일</th>
 			<th>직업</th>
-			<th>삭제</th>
 		</tr>
 		<tbody>
 		
@@ -93,7 +92,6 @@
 				<td><%=rs.getString("MEM_HP")%></td>
 				<td><%=rs.getString("MEM_MAIL")%></td>
 				<td><%=rs.getString("MEM_JOB")%></td>
-				<td id="delete"><a href="deleteMember.jsp?MEM_ID=<%=rs.getString("MEM_ID")%>">삭제</a></td>
 			</tr>
 
 			<%
