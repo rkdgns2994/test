@@ -10,12 +10,13 @@
 <%	
  	String mem_id = null;
 
-// 	if((session.getAttribute("mem_id") == null) ||
-// 	  (!((String)session.getAttribute("mem_id")).equals("a001"))){
-// 		out.println("<Script>");	
-// 		out.println("location.href='loginForm.jsp'");	
-// 		out.println("</Script>");	
-// 	}
+	if((session.getAttribute("mem_id") == null) ||
+	  (!((String)session.getAttribute("mem_id")).equals("a001"))){
+		out.println("<Script>");	
+		out.println("location.href='loginForm.jsp'");
+		out.println("alert('관리자만 접근 할 수 있습니다.')");
+		out.println("</Script>");	
+	}
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -78,6 +79,7 @@
 			<th>휴대폰번호</th>
 			<th>이메일</th>
 			<th>직업</th>
+			<th>강제탈퇴</th>
 		</tr>
 		<tbody>
 		
@@ -92,6 +94,7 @@
 				<td><%=rs.getString("MEM_HP")%></td>
 				<td><%=rs.getString("MEM_MAIL")%></td>
 				<td><%=rs.getString("MEM_JOB")%></td>
+				<td><a href="<%=request.getContextPath()%>/member/deleteMember.jsp?mem_id=<%=rs.getString("mem_id")%>">탈퇴</a></td>
 			</tr>
 
 			<%
