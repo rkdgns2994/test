@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<footer class="android-footer mdl-mega-footer">
+<footer class="android-footer mdl-mega-footer" style="height: 70px;">
 	<div class="mdl-mega-footer--top-section">
 		<div class="mdl-mega-footer--right-section">
 			<p class="mdl-typography--font-light">연습용 게시판</p>
