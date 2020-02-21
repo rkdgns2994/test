@@ -26,34 +26,13 @@
 			Context init = new InitialContext();
 			DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/OracleDB");
 			conn = ds.getConnection();
-			
+
+// 			입력된 회원정보 레코드를 수정한다.
 			pstmt = conn.prepareStatement("update SCOTT.MEMBER \n" 
 										  +"set MEM_PASS=?, MEM_NAME=?, \n"
 										  +    "MEM_BIR=?, MEM_ADD1=?, MEM_ADD2=?, \n"
 										  +    "MEM_HP=?, MEM_MAIL=?, MEM_JOB=? \n"
 										  + "where MEM_ID=?");
-			
-// 			pstmt.setString(1, rs.getString("mem_pass"));
-// 			pstmt.setString(2, rs.getString("mem_name"));
-// 			pstmt.setString(3, rs.getString("mem_bir"));
-// 			pstmt.setString(4, rs.getString("mem_add1"));
-// 			pstmt.setString(5, rs.getString("mem_add2"));
-// 			pstmt.setString(6, rs.getString("mem_hp"));
-// 			pstmt.setString(7, rs.getString("mem_mail"));
-// 			pstmt.setString(8, rs.getString("mem_job"));
-// 			pstmt.setString(9, rs.getString("mem_id"));
-// 			pstmt.executeUpdate();
-// 			rs.next();
-			
-// 			pstmt.setString(1, "MEM_PASS");
-// 			pstmt.setString(2, "MEM_NAME");
-// 			pstmt.setString(3, "MEM_BIR");
-// 			pstmt.setString(4, "MEM_ADD1");
-// 			pstmt.setString(5, "MEM_ADD2");
-// 			pstmt.setString(6, "MEM_HP");
-// 			pstmt.setString(7, "MEM_MAIL");
-// 			pstmt.setString(8, "MEM_JOB");
-// 			pstmt.setString(9, "MEM_ID");
 
 			pstmt.setString(1, mem_pass);
 			pstmt.setString(2, mem_name);
@@ -67,8 +46,8 @@
 			pstmt.executeUpdate();
 			
 			int result = pstmt.executeUpdate();
-		System.out.println("result = "  + result);
-//	 		레코드가 수정되면 회원리스트으로 이동, 그렇지 않으면 다시 회원뷰 폼으로 이동.
+			
+//	 		레코드가 수정되거나 실패하면  alert 창 표시와 함께 회원리스트으로 이동
 			if(result!= 0){
 					out.println("<script>");	
 					out.println("location.href='memberList.jsp'");	
