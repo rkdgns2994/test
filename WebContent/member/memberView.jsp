@@ -49,15 +49,19 @@
 	<table border=1>
 		<tr>
 			<td>아이디</td>
-			<td><input type='text' name='mem_id' disabled='disabled' value="<%=rs.getString("mem_id")%>"/></td>
+			<td><input type='text' name='mem_id' value="<%=rs.getString("mem_id")%>"/></td>
 		</tr>
 		<tr>
 			<td>패스워드</td>
 			<td><input type='text' name='mem_pass' value="<%=rs.getString("mem_pass")%>"/></td>
 		</tr>
 		<tr>
+			<td>생년월일</td>
+			<td><input type='text' name='mem_bir' value="<%=rs.getString("mem_bir")%>"/></td>
+		</tr>
+		<tr>
 			<td>성명</td>
-			<td><input type='text' name='mem_name' disabled='disabled' value="<%=rs.getString("mem_name")%>"/></td>
+			<td><input type='text' name='mem_name' value="<%=rs.getString("mem_name")%>"/></td>
 		</tr>
 		<tr>
 			<td>휴대폰</td>
