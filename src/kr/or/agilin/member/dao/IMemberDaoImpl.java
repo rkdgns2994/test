@@ -29,7 +29,7 @@ public class IMemberDaoImpl implements IMemberDao {
 
 	@Override
 	public List<MemberVO> memberList(Map<String, String> params) throws SQLException {
-		return (List<MemberVO>) client.queryForObject("member.memberList", params);
+		return client.queryForList("member.memberList", params);
 	}
 
 	@Override
