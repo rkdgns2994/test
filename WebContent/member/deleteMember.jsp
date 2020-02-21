@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-//	입력한 데이터를 가져올 씨 한글 데이터가 깨지지 않도록 인코딩 처리한다.
+//	입력한 데이터를 가져올 시 한글 데이터가 깨지지 않도록 인코딩 처리한다.
 	request.setCharacterEncoding("UTF-8");
 
 	String mem_id = null;
@@ -16,7 +16,7 @@
 	if((!((String)session.getAttribute("mem_id")).equals("a001"))){
 		out.println("<script>");
 		out.println("location.href='memberList.jsp'");
-		out.println("alert('관리자만 사용 할 수 있습니다.')");
+		out.println("alert('탈퇴 되었습니다.')");
 		out.println("</script>");
 	}else if((((String)session.getAttribute("mem_id")).equals("a001"))){
 		out.println("<script>");
