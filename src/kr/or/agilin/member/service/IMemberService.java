@@ -15,6 +15,6 @@ public interface IMemberService {
 	
 	public void updateMember(MemberVO memberInfo);
 	
-	public void deleteMember(MemberVO memberInfo);
+	public void deleteMember(Map<String, String> params);
 	
 }
