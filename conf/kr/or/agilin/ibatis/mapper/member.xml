@@ -6,12 +6,13 @@
 	<typeAlias alias="memberVO" type="kr.or.agilin.vo.MemberVO" />
 
 	<sql id="selectAll">
-		SELECT *
-		  FROM MEMBER
+		SELECT * FROM SCOTT.MEMBER
 		 WHERE MEM_DELETE = 'n'
+		 ORDER BY MEM_ID ASC 
 <!-- 		WHERE 1 = 1 -->
 	</sql>
 	
+<!--  게시판 검색시 키워드 값, 키코드 값 찾기 -->
 	<sql id="searchCondition">
 		<dynamic prepend="AND">
 			<isNotEmpty property="search_keyword" open="(" close=")">
@@ -36,13 +37,11 @@
 	<select id="memberInfo" parameterClass="map" resultClass="MemberVO">
 		<include refid="selectAll" />
 		AND MEM_ID = #mem_id#
-
 		<dynamic>
 			<isNotEmpty property="mem_pass" prepend="AND">
 				MEM_PASS = #mem_pass#
 			</isNotEmpty>
 		</dynamic>
-
 	</select>
 
 	<select id="memberList" resultClass="memberVO">
@@ -51,7 +50,7 @@
 	</select>
 
 	<update id="updateMember" parameterClass="memberVO">
-		UPDATE MEMBER
+		UPDATE SCOTT.MEMBER
 		   SET MEM_PASS = #mem_pass#
 			  ,MEM_NAME = #mem_name#
 			  ,MEM_ADD1 = #mem_add1#
@@ -63,30 +62,30 @@
 	</update>
 
 	<update id="deleteMember" parameterClass="map">
-		UPDATE MEMBER
-		SET MEM_DELETE = 'y'
-		WHERE MEM_ID = #mem_id#
+		UPDATE SCOTT.MEMBER
+		   SET MEM_DELETE = 'y'
+		 WHERE MEM_ID = #mem_id#
 	</update>
 
 	<update id="insertMember" parameterClass="memberVO">
-		INSERT INTO MEMBER(mem_id
-						  ,mem_pass
-						  ,mem_name
-						  ,mem_bir
-						  ,mem_add1
-						  ,mem_add2
-						  ,mem_hp
-						  ,mem_mail
-						  ,mem_job)
+		INSERT INTO SCOTT.MEMBER(mem_id
+						  		,mem_pass
+						  		,mem_name
+						  		,mem_bir
+						  		,mem_add1
+						  		,mem_add2
+						  		,mem_hp
+						  		,mem_mail
+						  		,mem_job)
 
-			  		VALUES(#mem_id#
-			  		      ,#mem_pass#
-			  		      ,#mem_name#
-			  		      ,#mem_bir#
-			  		      ,#mem_add1#
-			  		      ,#mem_add2#
-			  		      ,#mem_hp#
-			  		      ,#mem_mail#
-			  		      ,#mem_job#)
+			  			 VALUES(#mem_id#
+			  		     	   ,#mem_pass#
+			  		      	   ,#mem_name#
+			  		      	   ,#mem_bir#
+			  		      	   ,#mem_add1#
+			  		      	   ,#mem_add2#
+			  		      	   ,#mem_hp#
+			  		      	   ,#mem_mail#
+			  		      	   ,#mem_job#)
 	</update>
 </sqlMap>
