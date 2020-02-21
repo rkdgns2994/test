@@ -16,7 +16,7 @@ public class SqlMapClientFactory {
 		Resources.setCharset(charSet);
 	
 		try{ 	
-			Reader reader =  Resources.getResourceAsReader("kr/or/ddit/ibatis/config/SqlMapConfig.xml");
+			Reader reader =  Resources.getResourceAsReader("kr/or/agilin/ibatis/config/SqlMapConfig.xml");
 			client = SqlMapClientBuilder.buildSqlMapClient(reader);
 		}catch(IOException e) {
 			e.printStackTrace();
