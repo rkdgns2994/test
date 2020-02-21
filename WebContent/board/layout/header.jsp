@@ -17,25 +17,14 @@
 			</span>
 			<!-- Add spacer, to align navigation to the right in desktop -->
 			<div class="android-header-spacer mdl-layout-spacer"></div>
-			<div
-				class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-				<label class="mdl-button mdl-js-button mdl-button--icon"
-					for="search-field"><i class="material-icons">search</i>
-				</label>
-				<div class="mdl-textfield__expandable-holder">
-					<span id="loginPrt"><font color="red"><%=((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")) == null ? "비회원" : ((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")).getMem_name() %></font>님 환영합니다.</span>
-				</div>
-			</div>
 			<!-- Navigation -->
 			<div class="android-navigation-container">
 				<nav class="android-navigation mdl-navigation"> 
+					<span id="loginPrt"><font color="red"><%=((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")) == null ? "비회원" : ((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")).getMem_name() %></font>님 환영합니다.</span>
 					<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">공지사항</a>
 					<a class="mdl-navigation__link mdl-typography--text-uppercase"	href="">자유게시판</a> 
 					<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">자료실</a>
 					<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">QnA</a> 
-					<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">메뉴1</a>
-					<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">메뉴2</a> 
-					<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">메뉴3</a>
 				</nav>
 			</div>
 			<button
@@ -46,8 +35,6 @@
 			<ul	class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
 				<li class="mdl-menu__item" id="info">개인정보수정</li>
 				<li class="mdl-menu__item" id="myhome">마이홈</li>
-				<li disabled class="mdl-menu__item" id="message">쪽지보기</li>
-				<li disabled class="mdl-menu__item" id="schedule">스케줄관리</li>
 				<li class="mdl-menu__item" id="logout"><a href="${pageContext.request.contextPath }/board/logout.jsp">로그아웃</a></li>
 			</ul>
 		</div>
