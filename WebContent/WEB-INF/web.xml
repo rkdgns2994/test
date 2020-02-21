@@ -27,5 +27,25 @@
 <!--    		<res-auth>Container</res-auth> -->
 <!-- 	</resource-ref> -->
 
+<!-- 
+  	 해당 웹 어플리케이션 내에서 전역으로 활용되는 상수 - 밑에 4가지는 암기하시오!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  -->
+   	<context-param>
+   		<param-name>oracleDriver</param-name>
+   		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+   	</context-param>
+   	<context-param>
+   		<param-name>oracleURL</param-name>
+   		<param-value>jdbc:oracle:thin:@DESKTOP-0HPCDJ3:1522:XE</param-value>
+   	</context-param>
+   	<context-param>
+   		<param-name>mysqlDriver</param-name>
+   		<param-value>com.mysql.jdbc.Driver</param-value>
+   	</context-param>
+   	<context-param>
+   		<param-name>mysqlURL</param-name>
+   		<param-value>jdbc:mysql://DESKTOP-0HPCDJ3:3306/Oracle</param-value>
+   	</context-param>
+
 
 </web-app>
