@@ -16,6 +16,6 @@ public interface IMemberDao {
 	
 	public void updateMember(MemberVO memberInfo) throws SQLException;
 	
-	public void deleteMember(MemberVO memberInfo) throws SQLException;
+	public void deleteMember(Map<String, String> params) throws SQLException;
 	
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.agilin.ibatis.factory.SqlMapClientFactory;
 import kr.or.agilin.vo.MemberVO;
 
 public class IMemberDaoImpl implements IMemberDao {
@@ -14,38 +15,36 @@ public class IMemberDaoImpl implements IMemberDao {
 	private SqlMapClient client;
 	
 	private IMemberDaoImpl(){
+		client = SqlMapClientFactory.getSqlMapClient();
+	}
 	
+	public static IMemberDao getInstance(){
+		return (dao == null) ? dao = new IMemberDaoImpl() : dao;
 	}
 	
 	@Override
 	public MemberVO memberInfo(Map<String, String> params) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return (MemberVO) client.queryForObject("member.memberInfo", params);
 	}
 
 	@Override
-	public List<MemberVO> memberList(Map<String, String> params)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MemberVO> memberList(Map<String, String> params) throws SQLException {
+		return (List<MemberVO>) client.queryForObject("member.memberList", params);
 	}
 
 	@Override
 	public void insertMember(MemberVO memberInfo) throws SQLException {
-		// TODO Auto-generated method stub
-
+		client.update("member.insertMember", memberInfo);
 	}
 
 	@Override
 	public void updateMember(MemberVO memberInfo) throws SQLException {
-		// TODO Auto-generated method stub
-
+		client.update("member.updateMember", memberInfo);
 	}
 
 	@Override
-	public void deleteMember(MemberVO memberInfo) throws SQLException {
-		// TODO Auto-generated method stub
-
+	public void deleteMember(Map<String, String> params) throws SQLException {
+		client.update("member.deleteMember", params);
 	}
 
 }
