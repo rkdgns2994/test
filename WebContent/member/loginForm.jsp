@@ -22,24 +22,24 @@
 <body>
 <!-- 로그인 링크 클릭 시 loginCheck.jsp 페이지 호출하여 로그인 처리 -->
 	<form action="<%=request.getContextPath()%>/member/loginCheck.jsp" method="POST">
-	<center>
-		<table border = 1>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="mem_id" value="" /></td>
-			</tr>
-			<tr>
-				<td>패스워드</td>
-				<td><input type="text" name="mem_pass" value="" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" id="footer">
-					<input type="submit" value="로그인"> 
-					<input type="button" value="회원가입" onclick="location.href='<%=request.getContextPath()%>/member/memberForm.jsp'"/>
-				</td>
-			</tr>
-		</table>
-	</center>	
+		<center>
+			<table border = 1>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="mem_id" value="" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td><input type="text" name="mem_pass" value="" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="footer">
+						<input type="submit" value="로그인"> 
+						<input type="button" value="회원가입" onclick="location.href='<%=request.getContextPath()%>/member/memberForm.jsp'"/>
+					</td>
+				</tr>
+			</table>
+		</center>	
 	</form>
 </body>
 </html>
