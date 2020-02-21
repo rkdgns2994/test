@@ -18,7 +18,6 @@
 					<isEqual property="search_keycode" compareValue="TOTAL">
 						    MEM_NAME LIKE '%'||#search_keyword#||'%'
 		  		 		 OR MEM_JOB LIKE '%'||#search_keyword#||'%'
-		  		 		 OR MEM_LIKE LIKE '%'||#search_keyword#||'%'
 		  		 		 OR MEM_ADD1 LIKE '%'||#search_keyword#||'%'
 				    </isEqual>
 					<isEqual property="search_keycode" compareValue="NAME">
@@ -26,9 +25,6 @@
 				    </isEqual>
 					<isEqual property="search_keycode" compareValue="JOB">
 							MEM_JOB LIKE '%'||#search_keyword#||'%'
-				    </isEqual>
-					<isEqual property="search_keycode" compareValue="LIKE">
-							MEM_LIKE LIKE '%'||#search_keyword#||'%'
 				    </isEqual>
 					<isEqual property="search_keycode" compareValue="ADD1">
 							MEM_ADD1 LIKE '%'||#search_keyword#||'%'
@@ -56,15 +52,13 @@
 
 	<update id="updateMember" parameterClass="memberVO">
 		UPDATE MEMBER
-		SET MEM_PASS = #mem_pass#
-			,MEM_HOMETEL = #mem_hometel#
-			,MEM_COMTEL = #mem_comtel#
-			,MEM_HP = #mem_hp#
-			,MEM_MAIL= #mem_mail#
-			,MEM_ADD1 = #mem_add1#
-			,MEM_ADD2 = #mem_add2#
-			,MEM_JOB = #mem_job#
-			,MEM_LIKE = #mem_like#
+		   SET MEM_PASS = #mem_pass#
+			  ,MEM_NAME = #mem_name#
+			  ,MEM_ADD1 = #mem_add1#
+			  ,MEM_ADD2 = #mem_add2#
+			  ,MEM_HP = #mem_hp#
+			  ,MEM_MAIL= #mem_mail#
+			  ,MEM_JOB = #mem_job#
 		WHERE MEM_ID = #mem_id#
 	</update>
 
@@ -75,14 +69,24 @@
 	</update>
 
 	<update id="insertMember" parameterClass="memberVO">
-		INSERT INTO
-		MEMBER(mem_id, mem_pass, mem_name, mem_regno1, mem_regno2, mem_bir,
-		mem_zip, mem_add1, mem_add2, mem_hometel, mem_comtel, mem_hp,
-		mem_mail, mem_job, mem_like)
+		INSERT INTO MEMBER(mem_id
+						  ,mem_pass
+						  ,mem_name
+						  ,mem_bir
+						  ,mem_add1
+						  ,mem_add2
+						  ,mem_hp
+						  ,mem_mail
+						  ,mem_job)
 
-		VALUES(#mem_id#, #mem_pass#, #mem_name#, #mem_regno1#, #mem_regno2#, #mem_bir#,
-		#mem_zip#, #mem_add1#, #mem_add2#, #mem_hometel#, #mem_comtel#,
-		#mem_hp#, #mem_mail#, #mem_job#, #mem_like#)
-
+			  		VALUES(#mem_id#
+			  		      ,#mem_pass#
+			  		      ,#mem_name#
+			  		      ,#mem_bir#
+			  		      ,#mem_add1#
+			  		      ,#mem_add2#
+			  		      ,#mem_hp#
+			  		      ,#mem_mail#
+			  		      ,#mem_job#)
 	</update>
 </sqlMap>
