@@ -4,7 +4,6 @@
     "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 
 <sqlMapConfig>
-<!--    <properties resource="kr/or/agilin/ibatis/config/SqlMapConfig.properties" /> -->
    <settings cacheModelsEnabled="true" enhancementEnabled="true"
       lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
       maxTransactions="5" useStatementNamespaces="true" />
@@ -12,12 +11,12 @@
    <transactionManager type="JDBC">
 
 		  <dataSource type="JNDI">
-		  		<property name="DBJndiContext" value="java:comp/env/jdbc/ddit"/>
+		  		<property name="DBJndiContext" value="java:comp/env/jdbc/agilin"/>
 		  </dataSource>	
 		
    </transactionManager>
     
-    <sqlMap resource="kr/or/ddit/ibatis/mapper/member.xml"/>
+    <sqlMap resource="kr/or/agilin/ibatis/mapper/member.xml"/>
 </sqlMapConfig>
 
 
