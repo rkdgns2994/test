@@ -10,7 +10,7 @@
 <footer class="android-footer mdl-mega-footer">
 	<div class="mdl-mega-footer--top-section">
 		<div class="mdl-mega-footer--right-section">
-			<p class="mdl-typography--font-light">2015 재단법인 대덕인재개발원</p>
+			<p class="mdl-typography--font-light">연습용 게시판</p>
 			<a class="mdl-typography--font-light" href="#top"> Back to Top <i class="material-icons">expand_less</i></a>
 		</div>
 	</div>

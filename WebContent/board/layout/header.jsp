@@ -1,3 +1,4 @@
+<%@page import="kr.or.agilin.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,7 +13,7 @@
 	<div class="android-header mdl-layout__header mdl-layout__header--waterfall">
 		<div class="mdl-layout__header-row">
 			<span class="android-title mdl-layout-title"> 
-				<a class="mdl-navigation__link mdl-typography--text-uppercase" href=""><font color="yellow" style="font-size: 20px;">Stiftung DDIT</font></a>
+				<a class="mdl-navigation__link mdl-typography--text-uppercase" href=""><font color="yellow" style="font-size: 20px;">Agilin TEST BOARD</font></a>
 			</span>
 			<!-- Add spacer, to align navigation to the right in desktop -->
 			<div class="android-header-spacer mdl-layout-spacer"></div>
@@ -22,7 +23,7 @@
 					for="search-field"><i class="material-icons">search</i>
 				</label>
 				<div class="mdl-textfield__expandable-holder">
-					<input class="mdl-textfield__input" type="text" id="search-field">
+					<span id="loginPrt"><font color="red"><%=((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")) == null ? "비회원" : ((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")).getMem_name() %></font>님 환영합니다.</span>
 				</div>
 			</div>
 			<!-- Navigation -->
@@ -47,7 +48,7 @@
 				<li class="mdl-menu__item" id="myhome">마이홈</li>
 				<li disabled class="mdl-menu__item" id="message">쪽지보기</li>
 				<li disabled class="mdl-menu__item" id="schedule">스케줄관리</li>
-				<li class="mdl-menu__item" id="logout"><a href="${pageContext.request.contextPath }/06/logout.jsp">로그아웃</a></li>
+				<li class="mdl-menu__item" id="logout"><a href="${pageContext.request.contextPath }/board/logout.jsp">로그아웃</a></li>
 			</ul>
 		</div>
 	</div>
