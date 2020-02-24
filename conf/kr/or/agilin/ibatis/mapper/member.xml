@@ -76,7 +76,8 @@
 						  		,mem_add2
 						  		,mem_hp
 						  		,mem_mail
-						  		,mem_job)
+						  		,mem_job
+						  		,mem_delete)
 
 			  			 VALUES(#mem_id#
 			  		     	   ,#mem_pass#
@@ -86,6 +87,7 @@
 			  		      	   ,#mem_add2#
 			  		      	   ,#mem_hp#
 			  		      	   ,#mem_mail#
-			  		      	   ,#mem_job#)
+			  		      	   ,#mem_job#
+			  		      	   ,'n')
 	</update>
 </sqlMap>
