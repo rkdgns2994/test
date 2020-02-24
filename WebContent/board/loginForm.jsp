@@ -1,20 +1,36 @@
+<%@page import="kr.or.agilin.utiles.CryptoGenerator"%>
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+	// 공개키 취득
+	Map<String, String> publicKeyMap = CryptoGenerator.generatePairKey(session);
+	
+%>
+<c:set var="publicKeyMap" value="<%=publicKeyMap %>"></c:set>  
 <c:url var="loginCheckURL" value="/board/loginCheck.jsp"></c:url>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin.css" type="text/css">
 <title>로그인폼</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/validation.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/cookieControl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jsbn.js"></script>	
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/rsa.js"></script>	
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/prng4.js"></script>	
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/rng.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/core.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
 <script type="text/javascript">
 $(function(){
+	
+	if(Get_Cookie('mem_id')){
+		$('input[name=mem_id]').val(Get_Cookie('mem_id'));
+	}	
 	
 	$('#loginBtn').click(function(){
 		if(!$('input[name=mem_id]').val().validationID()){
@@ -26,7 +42,21 @@ $(function(){
 			return;
 		}
 		
+		var mem_id = $('input[name=mem_id]').val();
+		var mem_pass = $('input[name=mem_pass]').val();
+		
+		var modulus = '${publicKeyMap.publicModulus}';
+		var exponent = '${publicKeyMap.publicExponent}';
+		
+		var rsaOBJ = new RSAKey();
+		rsaOBJ.setPublic(modulus, exponent);
+		
+		var encrypt_id = rsaOBJ.encrypt(mem_id);
+		var encrypt_pass = rsaOBJ.encrypt(mem_pass);
+		
 		var $frm = $('<form action="${loginCheckURL}" method="POST"></form>');
+		$frm.append('<input type="hidden" name="mem_id" value="' + encrypt_id + '"/>');
+		$frm.append('<input type="hidden" name="mem_pass" value="' + encrypt_pass + '"/>');
 		
 		$(document.body).append($frm);
 
