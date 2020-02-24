@@ -9,7 +9,6 @@ import kr.or.agilin.member.dao.IMemberDaoImpl;
 import kr.or.agilin.vo.MemberVO;
 
 public class IMemberServiceImpl implements IMemberService {
-	
 	// 싱글톤 패턴
 	private static IMemberService service = new IMemberServiceImpl();
 	private IMemberDao dao;
@@ -70,5 +69,4 @@ public class IMemberServiceImpl implements IMemberService {
 			e.printStackTrace();
 		}
 	}
-
 }
