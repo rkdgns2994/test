@@ -12,7 +12,7 @@
 		<div class="mdl-mega-footer--right-section">
 			<p class="mdl-typography--font-light">연습용 게시판</p>
 			<a class="mdl-typography--font-light" href="#top"> Back to Top <i class="material-icons">expand_less</i></a>
-		</div>
+		</div>	
 	</div>
 </footer>
 </body>
