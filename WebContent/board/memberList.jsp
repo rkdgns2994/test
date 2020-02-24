@@ -1,9 +1,9 @@
-<%@page import="kr.or.agilin.member.service.IMemberServiceImpl"%>
-<%@page import="kr.or.agilin.vo.MemberVO"%>
-<%@page import="kr.or.agilin.member.service.IMemberService"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
+<%@page import="kr.or.agilin.vo.MemberVO"%>
 <%@page import="java.util.List"%>
+<%@page import="kr.or.agilin.member.service.IMemberServiceImpl"%>
+<%@page import="kr.or.agilin.member.service.IMemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -31,11 +31,15 @@
 <script src='http://code.jquery.com/jquery-latest.js'></script>
 <script>
 	$(function() {
-		$('table tr:gt(0)').click(
-				function() {
-					var mem_id = $(this).find('td:eq(0)').text();
-					location.href = '${pageContext.request.contextPath}/board/main.jsp?contentPage=/board/memberView.jsp?mem_id='+mem_id;
-				});
+		$('table tr:gt(0)').click(function() {
+			var mem_id = $(this).find('td:eq(0)').text();
+			var url= "${pageContext.request.contextPath}/board/memberView.jsp?mem_id=" + mem_id;
+			var winWidth = 400;
+		    var winHeight = 300;
+		    var popupOption= "width="+winWidth+", height="+winHeight;    //팝업창 옵션(optoin)
+			window.open(url, mem_id, popupOption);
+			console.log('click');
+		});
 	});
 </script>
 </head>
@@ -52,7 +56,6 @@
 			</tr>
 		</thead>
 		<tbody id="memberListTBY">
-			
 			<c:forEach items="${memberList }" var="memberInfo" >
 			<tr>
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_id()}</td>
