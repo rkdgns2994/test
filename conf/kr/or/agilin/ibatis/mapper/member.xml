@@ -8,7 +8,7 @@
 	<sql id="selectAll">
 		SELECT * FROM SCOTT.MEMBER
 		 WHERE MEM_DELETE = 'n'
-		 ORDER BY MEM_ID ASC 
+<!-- 	 	 ORDER BY MEM_ID ASC -->
 <!-- 		WHERE 1 = 1 -->
 	</sql>
 	
