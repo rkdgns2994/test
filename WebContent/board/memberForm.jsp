@@ -84,7 +84,7 @@ function idCheck(){
 	$.ajax({
 	    type : "POST" 	// 전송방식을 지정한다(POST, GET)
 	    // 아래는 호출 URL을 설정한다. GET 방식일 경우 뒤에 파라미터를 붙여서 사용해도 된다.
-	    , url : "${pageContext.request.contextPath }/06/checkedID.jsp" 
+	    , url : "${pageContext.request.contextPath }/board/checkedID.jsp" 
 	    // 호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을 활용할 수 있다.
 	    , dataType : "json" 
 	    , data : { mem_id : $('input[name=mem_id]').val() } 
@@ -112,7 +112,7 @@ td {text-align: left; }
 </style>
 <body>
 	<center>
-		<form name="memberForm" action="${pageContext.request.contextPath }/member/insertMember.jsp" method="post">
+		<form name="memberForm" action="${pageContext.request.contextPath }/board/insertMember.jsp" method="post">
 			<table width="30%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td class="tLine" colspan="2"></td>
@@ -130,7 +130,6 @@ td {text-align: left; }
 				<tr>
 					<td class="tLine" colspan="2"></td>
 				</tr>
-
 				<tr>
 					<td class="fieldName" width="100px" height="25">생년월일</td>
 					<td>
