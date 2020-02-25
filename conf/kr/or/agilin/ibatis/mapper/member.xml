@@ -37,11 +37,11 @@
 	<select id="memberInfo" parameterClass="map" resultClass="MemberVO">
 		<include refid="selectAll" />
 		AND MEM_ID = #mem_id#
-		<dynamic>
-			<isNotEmpty property="mem_pass" prepend="AND">
-				MEM_PASS = #mem_pass#
-			</isNotEmpty>
-		</dynamic>
+<!-- 		<dynamic> -->
+<!-- 			<isNotEmpty property="mem_pass" prepend="AND"> -->
+<!-- 				MEM_PASS = #mem_pass# -->
+<!-- 			</isNotEmpty> -->
+<!-- 		</dynamic> -->
 	</select>
 
 	<select id="memberList" resultClass="memberVO">

@@ -8,7 +8,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <%
-	String mem_id = request.getParameter("mem_id");
+	String mem_id = null;
+	
+	mem_id = request.getParameter("mem_id");
 	
 	Map<String, String> params = new HashMap<String, String>();
 	params.put("mem_id", mem_id);
@@ -32,150 +34,141 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/validation.js"></script>
 <script type="text/javascript">
-$(function(){
-	
-	$('input[name=mem_name]').val('${memberInfo.mem_name}');
-	
-	$('input[name=mem_bir]').val('${memberInfo.mem_bir}');
-	
-	$('input[name=mem_id]').val('${memberInfo.mem_id}');
-	
-	$('input[name=mem_pass]').val('${memberInfo.mem_pass}');
-	
-	$('input[name=mem_hp]').val('${memberInfo.mem_hp}');
-	
-	$('input[name=mem_mail]').val('${memberInfo.mail}');
-	
-	$('input[name=mem_add1]').val('${memberInfo.add1}');
-	
-	$('input[name=mem_add2]').val('${memberInfo.add2}');
-	
-	$('input[name=mem_job').val('${memberInfo.mem_job}');
-	
-	$('form[name=memberView]').submit(function(){
-		$(this).attr('action', '${pageContext.request.contextPath }/board/updateMember.jsp');
-		$(this).append('<input type="hidden" name="mem_id" value="${memberInfo.mem_id}"/>');
+	$(function(){
 		
-		if (!$('input[name=mem_id]').val().validationID()) {
-			alert('아이디를 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_pass]').val().validationPWD()) {
-			alert('비밀번호를 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_name]').val().validationNM()) {
-			alert('이름을 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_name]').val().validationNM()) {
-			alert('생일을 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_hp]').val().validationHP()) {
-			alert('휴대폰 번호를 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_mail]').val().validationMAIL()) {
-			alert('이메일을 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_add1]').val().validationADD1()) {
-			alert('주소를 바르게 입력해주세요.');
-			return false;
-		}
-		if (!$('input[name=mem_job]').val().validationJOB()) {
-			alert('직업을 바르게 입력해주세요.');
-			return false;
-		}
+		$('input[name=mem_name]').val('${memberInfo.mem_name}');
 		
-		return true;
-	});
+		$('input[name=mem_bir]').val('${memberInfo.mem_bir}');
+		
+		$('input[name=mem_id]').val('${memberInfo.mem_id}');
+		
+		$('input[name=mem_pass]').val('${memberInfo.mem_pass}');
+		
+		$('input[name=mem_hp]').val('${memberInfo.mem_hp}');
+		
+		$('input[name=mem_mail]').val('${memberInfo.mem_mail}');
+		
+		$('input[name=mem_add1]').val('${memberInfo.mem_add1}');
+		
+		$('input[name=mem_add2]').val('${memberInfo.mem_add2}');
+		
+		$('input[name=mem_job').val('${memberInfo.mem_job}');
 	
-	$('#btn2').click(function(){
-		$(location).attr('href', '${pageContext.request.contextPath }/board/memberView.jsp?mem_id=${memberInfo.mem_id}');
-		self.close();
-	});
+		$('form[name=memberView]').submit(function(){
+			$(this).attr('action', '${pageContext.request.contextPath }/board/updateMember.jsp');
+			
+			if (!$('input[name=mem_id]').val().validationID()) {
+				alert('아이디를 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_pass]').val().validationPWD()) {
+				alert('비밀번호를 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_name]').val().validationNM()) {
+				alert('이름을 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_name]').val().validationNM()) {
+				alert('생일을 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_hp]').val().validationHP()) {
+				alert('휴대폰 번호를 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_mail]').val().validationMAIL()) {
+				alert('이메일을 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_add1]').val().validationADD1()) {
+				alert('주소를 바르게 입력해주세요.');
+				return false;
+			}
+			if (!$('input[name=mem_job]').val().validationJOB()) {
+				alert('직업을 바르게 입력해주세요.');
+				return false;
+			}
+			
+			return true;
+		});
 		
-	$('#btn3').click(function(){
-		$(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
+		$('#btn2').click(function(){
+			$(location).attr('href', '${pageContext.request.contextPath }/board/memberView.jsp?mem_id=${memberInfo.mem_id}');
+		});
+	
 	});
-});
-
 </script>
 <body>
-		<form name="memberView" method="post">
-			<table width="80%" border="0" cellpadding="0" cellspacing="0">
-				<tr><td class="tLine" colspan="2"></td></tr>
-				<tr>
-					<td class="fieldName" width="100px" height="25">성 명</td>
-					<td>
-						<input type="text" name="mem_name" value=""/>
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>	
-				<tr>
-					<td class="fieldName" width="100px" height="25">생년월일</td>
-					<td>
-						<input type="text" name="mem_bir" value=""/>
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>
-				
-				<tr>
-					<td class="fieldName" width="100px" height="25">아이디</td>
-					<td>
-						<input type="text" name="mem_id" value="">
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>
-				
-				<tr>
-					<td class="fieldName" width="100px" height="25">비밀번호</td>
-					<td>
-						<input type="text" name="mem_pass" value="" />
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>
-			</table>
-			<table width="80%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 10px;">
-				<tr>
-					<td class="fieldName" width="100px" height="25">핸드폰</td>
-					<td>
-						<input type="text" name="mem_hp" value=""/>
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>
-				<tr>
-					<td class="fieldName" width="100px" height="25">이메일</td>
-					<td>
-						<input type="text" name="mem_mail" value="" /> 
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>
-				<tr>
-					<td class="fieldName" width="100px" height="25">주소</td>
-					<td> 
-						<input type="text" name="mem_add1" id="mem_add1" value="" /> 
-						<input type="text" name="mem_add2" id="mem_add2" value="" />
-					</td>
-				</tr>
-				<tr><td class="tLine" colspan="2"></td></tr>
-				<tr>
-					<td class="fieldName" width="100px" height="25">직 업</td>
-					<td>
-						<input type="text" name="mem_job" value=""/>
-					</td>
-				</tr>
-				<tr><td colspan="2" height="20"></td></tr>				
-				<tr>
-					<td class="btnGroup" colspan="2" >
-						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit">수정하기</button>
-						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn2" type="reset">취소</button>
-						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn3" type="button">삭제</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+	<form name="memberView" method="post">
+		<table width="80%" border="0" cellpadding="0" cellspacing="0">
+			<tr><td class="tLine" colspan="2"></td></tr>
+			<tr>
+				<td class="fieldName" width="100px" height="25">성 명</td>
+				<td>
+					<input type="text" name="mem_name" value=""/>
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>	
+			<tr>
+				<td class="fieldName" width="100px" height="25">생년월일</td>
+				<td>
+					<input type="text" name="mem_bir" value=""/>
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>
+			
+			<tr>
+				<td class="fieldName" width="100px" height="25">아이디</td>
+				<td>
+					<input type="text" name="mem_id" value="">
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>
+			
+			<tr>
+				<td class="fieldName" width="100px" height="25">비밀번호</td>
+				<td>
+					<input type="text" name="mem_pass" value="" />
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>
+			<tr>
+				<td class="fieldName" width="100px" height="25">핸드폰</td>
+				<td>
+					<input type="text" name="mem_hp" value=""/>
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>
+			<tr>
+				<td class="fieldName" width="100px" height="25">이메일</td>
+				<td>
+					<input type="text" name="mem_mail" value="" /> 
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>
+			<tr>
+				<td class="fieldName" width="100px" height="25">주소</td>
+				<td> 
+					<input type="text" name="mem_add1" id="mem_add1" value="" /> 
+					<input type="text" name="mem_add2" id="mem_add2" value="" />
+				</td>
+			</tr>
+			<tr><td class="tLine" colspan="2"></td></tr>
+			<tr>
+				<td class="fieldName" width="100px" height="25">직 업</td>
+				<td>
+					<input type="text" name="mem_job" value=""/>
+				</td>
+			</tr>
+			<tr><td colspan="2" height="20"></td></tr>				
+			<tr>
+				<td class="btnGroup" colspan="2" >
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit" onclick="window.opener.document.location.reload()">수정하기</button>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn2" type="reset">취소</button>
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

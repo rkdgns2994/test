@@ -42,6 +42,7 @@
 		pstmt = conn.prepareStatement("delete from SCOTT.MEMBER where MEM_ID=?");
 		pstmt.setString(1, delete_id);
 		pstmt.executeUpdate();	
+		rs.next();
 		
 	}catch(Exception e){
 		e.printStackTrace();

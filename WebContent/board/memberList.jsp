@@ -33,19 +33,37 @@
 	$(function() {
 		$('table tr:gt(0)').click(function() {
 			var mem_id = $(this).find('td:eq(0)').text();
-			var url= "${pageContext.request.contextPath}/board/memberView.jsp?mem_id=" + mem_id;
-			var winWidth = 400;
+			var url= '${pageContext.request.contextPath}/board/memberView.jsp?mem_id=' + mem_id;
+			var winWidth = 600;
 		    var winHeight = 300;
 		    var popupOption= "width="+winWidth+", height="+winHeight;    //팝업창 옵션(optoin)
 			window.open(url, mem_id, popupOption);
 			console.log('click');
 		});
+		
+		$("#allCheck").click(function(){
+			var chk = $("#allCheck").prop("checked");
+			if(chk){
+				$(".chBox").prop("checked", true);
+			}else{
+				$(".chBox").prop("checked", false);
+			}
+		});
+		
+		$("#chBox").click(function(){
+			$("#allCheck").prop("checked", false);
+		});
+
+		$('#selectDelete_Btn').click(function(){
+			$(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
+		});
+		
 	});
 </script>
 </head>
 <body>
 <div id="list">
-	<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%; ">
+	<table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 90%; ">
 		<thead>
 			<tr>
 				<th class="mdl-data-table__cell--non-numeric">아이디</th>
@@ -53,6 +71,10 @@
 				<th class="mdl-data-table__cell--non-numeric">이름</th>
 				<th class="mdl-data-table__cell--non-numeric">생년월일</th>
 				<th class="mdl-data-table__cell--non-numeric">직업</th>
+				<th class="mdl-data-table__cell--non-numeric">
+					<input id="allCheck" type="checkbox" onclick="allChk(this);" value="All"/><label>모두체크</label>&nbsp;/&nbsp;
+					<button type="button" id="selectDelete_Btn" class="selectDelete_Btn">강제탈퇴</button>
+				</th>
 			</tr>
 		</thead>
 		<tbody id="memberListTBY">
@@ -63,13 +85,14 @@
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_name()}</td>
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_bir()}</td>
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_job()}</td>
+				<td class="mdl-data-table__cell--non-numeric"><input type="checkbox" name="chBox" class="chBox" id="chBox" value="${memberInfo.getMem_delete()}"/></td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 </div>
-<div class="searchForm" align="right" style="margin-top: 20px; width: 100%;">
-	<form method="post" action="${pageContext.request.contextPath }/board/main.jsp">
+<div class="searchForm" align="right" style="margin-top: 20px; width: 90%;">
+	<form method="post" action="${pageContext.request.contextPath }/board/main.jsp?contentPage=memberList.jsp">
 		<select name="search_keycode">
 			<option value="ALL">전체</option>
 			<option value="NAME">성명</option>

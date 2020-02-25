@@ -52,12 +52,33 @@
 </style>
 <script>
 	$(function() {
-		$('table tr:gt(0)').click(
-				function() {
-					var mem_id = $(this).find('td:eq(0)').text();
-					location.href = '<%=request.getContextPath()%>/member/memberView.jsp?mem_id='+mem_id;
-				});
-	});
+		
+		$('table tr:gt(0)').click(function(){
+			var mem_id = $(this).find('td:eq(0)').text();
+			location.href = '<%=request.getContextPath()%>/member/memberView.jsp?mem_id=' + mem_id;
+		});
+	
+		$("#allCheck").click(function(){
+			var chk = $("#allCheck").prop("checked");
+			if(chk){
+				$(".chBox").prop("checked", true);
+			}else{
+				$(".chBox").prop("checked", false);
+			}
+		});
+		
+		$("#chBox").click(function(){
+			$("#allCheck").prop("checked", false);
+		});
+
+		$('#selectDelete_Btn').click(function(){
+			$(location).attr('href', '${pageContext.request.contextPath }/member/deleteMember.jsp?mem_id=${rs.getString("mem_id")}');
+		});
+		
+});
+	
+	
+	
 </script>
 </head>
 <body>
@@ -76,7 +97,10 @@
 			<th>휴대폰번호</th>
 			<th>이메일</th>
 			<th>직업</th>
-			<th>강제탈퇴</th>
+			<th>
+				<input id="allCheck" type="checkbox" onclick="allChk(this);" value="All"/><label>모두체크</label>&nbsp;/&nbsp;
+				<button type="button" id="selectDelete_Btn" class="selectDelete_Btn">선택삭제</button>
+			</th>
 		</tr>
 		<tbody>
 		
@@ -91,7 +115,8 @@
 				<td><%=rs.getString("MEM_HP")%></td>
 				<td><%=rs.getString("MEM_MAIL")%></td>
 				<td><%=rs.getString("MEM_JOB")%></td>
-				<td><a href="<%=request.getContextPath()%>/member/deleteMember.jsp?mem_id=<%=rs.getString("mem_id")%>">탈퇴</a></td>
+<%-- 				<td><a href="<%=request.getContextPath()%>/member/deleteMember.jsp?mem_id=<%=rs.getString("mem_id")%>">탈퇴</a></td> --%>
+				<td><center><input type="checkbox" name="chBox" class="chBox" id="chBox" value="<%=rs.getString("mem_id")%>"/></center></td>
 			</tr>
 
 			<%
@@ -99,8 +124,6 @@
 			%>
 
 		</tbody>
-		
-		
 	</table>
 </center>	
 </body>
