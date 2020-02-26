@@ -57,6 +57,7 @@
 		$('input[name=mem_job').val('${memberInfo.mem_job}');
 	
 		$('form[name=memberView]').submit(function(){
+			
 			$(this).attr('action', '${pageContext.request.contextPath }/board/updateMember.jsp');
 			
 			if (!$('input[name=mem_id]').val().validationID()) {
@@ -104,7 +105,6 @@
 <body>
 <input type="hidden" id="mem_id2"/>
 	<form name="memberView" method="post">
-<!-- 	<form name="memberView" method="post" onsubmit="aaa(); alert(1); self.close();"> -->
 		<table width="80%" border="0" cellpadding="0" cellspacing="0">
 			<tr><td class="tLine" colspan="2"></td></tr>
 			<tr>
