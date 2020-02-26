@@ -9,8 +9,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <%
 	String mem_id = null;
+	String mem_id2 = null;
 	
 	mem_id = request.getParameter("mem_id");
+	mem_id2 = request.getParameter("mem_id2");
 	
 	Map<String, String> params = new HashMap<String, String>();
 	params.put("mem_id", mem_id);
@@ -35,7 +37,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/validation.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+
 		$('input[name=mem_name]').val('${memberInfo.mem_name}');
 		
 		$('input[name=mem_bir]').val('${memberInfo.mem_bir}');
@@ -91,16 +93,18 @@
 			}
 			
 			return true;
-		});
+		}); 
 		
 		$('#btn2').click(function(){
 			$(location).attr('href', '${pageContext.request.contextPath }/board/memberView.jsp?mem_id=${memberInfo.mem_id}');
 		});
-	
+		
 	});
 </script>
 <body>
+<input type="hidden" id="mem_id2"/>
 	<form name="memberView" method="post">
+<!-- 	<form name="memberView" method="post" onsubmit="aaa(); alert(1); self.close();"> -->
 		<table width="80%" border="0" cellpadding="0" cellspacing="0">
 			<tr><td class="tLine" colspan="2"></td></tr>
 			<tr>
@@ -164,7 +168,7 @@
 			<tr><td colspan="2" height="20"></td></tr>				
 			<tr>
 				<td class="btnGroup" colspan="2" >
-					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit" onclick="window.opener.document.location.reload()">수정하기</button>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit">수정하기</button>
 					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn2" type="reset">취소</button>
 				</td>
 			</tr>
