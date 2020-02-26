@@ -30,17 +30,19 @@
 <title>memberList</title>
 <script src='http://code.jquery.com/jquery-latest.js'></script>
 <script>
+	// 테이블의 행 선택 시 팝업창으로 전환되어 보임.
 	$(function() {
 		$('table tr:gt(0)').click(function() {
 			var mem_id = $(this).find('td:eq(0)').text();
 			var url= '${pageContext.request.contextPath}/board/memberView.jsp?mem_id=' + mem_id;
-			var winWidth = 600;
+			var winWidth = 600;	
 		    var winHeight = 300;
 		    var popupOption= "width="+winWidth+", height="+winHeight;    //팝업창 옵션(optoin)
 			window.open(url, mem_id, popupOption);
 			console.log('click');
 		});
 		
+		// 각 행을 모두 선택할 수 있음.
 		$("#allCheck").click(function(){
 			var chk = $("#allCheck").prop("checked");
 			if(chk){
@@ -54,7 +56,7 @@
 			$("#allCheck").prop("checked", false);
 		});
 
-		$('#selectDelete_Btn').click(function(){
+		$('#Delete').click(function(){
 			$(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
 		});
 		
@@ -73,7 +75,7 @@
 				<th class="mdl-data-table__cell--non-numeric">직업</th>
 				<th class="mdl-data-table__cell--non-numeric">
 					<input id="allCheck" type="checkbox" onclick="allChk(this);" value="All"/><label>모두체크</label>&nbsp;/&nbsp;
-					<button type="button" id="selectDelete_Btn" class="selectDelete_Btn">강제탈퇴</button>
+					<button type="button" id="Delete" class="Delete">강제탈퇴</button>
 				</th>
 			</tr>
 		</thead>
