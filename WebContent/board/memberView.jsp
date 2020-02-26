@@ -9,10 +9,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <%
 	String mem_id = null;
-	String mem_id2 = null;
 	
 	mem_id = request.getParameter("mem_id");
-	mem_id2 = request.getParameter("mem_id2");
 	
 	Map<String, String> params = new HashMap<String, String>();
 	params.put("mem_id", mem_id);
@@ -103,7 +101,6 @@
 	});
 </script>
 <body>
-<input type="hidden" id="mem_id2"/>
 	<form name="memberView" method="post">
 		<table width="80%" border="0" cellpadding="0" cellspacing="0">
 			<tr><td class="tLine" colspan="2"></td></tr>
