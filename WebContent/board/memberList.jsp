@@ -39,7 +39,6 @@
 		    var winHeight = 300;
 		    var popupOption= "width="+winWidth+", height="+winHeight;    //팝업창 옵션(optoin)
 			window.open(url, mem_id, popupOption);
-			console.log('click');
 		});
 		
 		// 각 행을 모두 선택할 수 있음.
@@ -56,8 +55,22 @@
 			$("#allCheck").prop("checked", false);
 		});
 
-		$('#Delete').click(function(){
-			$(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
+// 		$('#Delete').click(function(){
+// 			$(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
+// 		});
+		
+		$("#Delete").click(function(){
+			  var confirm_val = confirm("정말 탈퇴시키겠습니까?");
+			  
+			  if(confirm_val) {
+			   var checkArr = new Array();
+			   
+			   $("input[class='chBox']:checked").each(function(){
+			    checkArr.push($(this).attr("value"));
+			   });
+			    
+			   $(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=?');
+			  } 
 		});
 		
 	});
@@ -74,7 +87,7 @@
 				<th class="mdl-data-table__cell--non-numeric">생년월일</th>
 				<th class="mdl-data-table__cell--non-numeric">직업</th>
 				<th class="mdl-data-table__cell--non-numeric">
-					<input id="allCheck" type="checkbox" onclick="allChk(this);" value="All"/><label>모두체크</label>&nbsp;/&nbsp;
+					<input id="allCheck" type="checkbox" onclick="allCheck(this);" value="All"/>
 					<button type="button" id="Delete" class="Delete">강제탈퇴</button>
 				</th>
 			</tr>
@@ -87,7 +100,7 @@
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_name()}</td>
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_bir()}</td>
 				<td class="mdl-data-table__cell--non-numeric">${memberInfo.getMem_job()}</td>
-				<td class="mdl-data-table__cell--non-numeric"><input type="checkbox" name="chBox" class="chBox" id="chBox" value="${memberInfo.getMem_delete()}"/></td>
+				<td class="mdl-data-table__cell--non-numeric"><input type="checkbox" name="chBox" class="chBox" id="chBox" value="${memberInfo.getMem_id()}"/></td>
 			</tr>
 			</c:forEach>
 		</tbody>
