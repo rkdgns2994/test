@@ -17,9 +17,9 @@
 	
 	String message = URLEncoder.encode("강제탈퇴가 완료되었습니다.", "UTF-8");
 	
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/board/main.jsp?contentPage=/board/memberList.jsp");
-	dispatcher.forward(request, response);
-	
+// 	RequestDispatcher dispatcher = request
+// 			.getRequestDispatcher("/board/main.jsp?contentPage=/board/memberList.jsp");
+// 	dispatcher.forward(request, response);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,6 +27,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
+//memberView 업데이트 후 창은 닫은 뒤 memberList(부모창)은 새로고침 됨
+	opener.location.reload();
+	window.close();
 </script>
 <title>deleteMember</title>
 </head>
