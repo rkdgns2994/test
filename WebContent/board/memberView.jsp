@@ -98,6 +98,22 @@
 			$(location).attr('href', '${pageContext.request.contextPath }/board/memberView.jsp?mem_id=${memberInfo.mem_id}');
 		});
 		
+		$('#btn3').click(function(){
+			
+			var confirm_val = confirm("정말 탈퇴하시겠습니까?");
+			  
+			  if(confirm_val) {
+			   var checkArr = new Array();
+			   
+			   $("input[class='chBox']:checked").each(function(){
+			    checkArr.push($(this).attr("value"));
+			   });
+			    
+			   $(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
+			  } 
+			
+		});
+		
 	});
 </script>
 <body>
@@ -167,6 +183,7 @@
 				<td class="btnGroup" colspan="2" >
 					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit">수정하기</button>
 					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn2" type="reset">취소</button>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn3" type="button">탈퇴</button>
 				</td>
 			</tr>
 		</table>
