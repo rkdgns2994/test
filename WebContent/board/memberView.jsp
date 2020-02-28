@@ -32,6 +32,7 @@
 		td {text-align: left; }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/validation.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -103,90 +104,90 @@
 			var confirm_val = confirm("정말 탈퇴하시겠습니까?");
 			  
 			  if(confirm_val) {
-			   var checkArr = new Array();
+			   		var checkArr = new Array();
 			   
-			   $("input[class='chBox']:checked").each(function(){
-			    checkArr.push($(this).attr("value"));
-			   });
+			   		$(this).each(function(){
+			    		checkArr.push($(this).attr("value"));
+			   		});
 			    
-			   $(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
+			   		$(location).attr('href', '${pageContext.request.contextPath }/board/deleteMember.jsp?mem_id=${memberInfo.mem_id}');
 			  } 
 			
 		});
 		
 	});
 </script>
-<body>
-	<form name="memberView" method="post">
-		<table width="80%" border="0" cellpadding="0" cellspacing="0">
-			<tr><td class="tLine" colspan="2"></td></tr>
-			<tr>
-				<td class="fieldName" width="100px" height="25">성 명</td>
-				<td>
-					<input type="text" name="mem_name" value=""/>
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>	
-			<tr>
-				<td class="fieldName" width="100px" height="25">생년월일</td>
-				<td>
-					<input type="text" name="mem_bir" value=""/>
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>
-			
-			<tr>
-				<td class="fieldName" width="100px" height="25">아이디</td>
-				<td>
-					<input type="text" name="mem_id" value="">
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>
-			
-			<tr>
-				<td class="fieldName" width="100px" height="25">비밀번호</td>
-				<td>
-					<input type="text" name="mem_pass" value="" />
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>
-			<tr>
-				<td class="fieldName" width="100px" height="25">핸드폰</td>
-				<td>
-					<input type="text" name="mem_hp" value=""/>
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>
-			<tr>
-				<td class="fieldName" width="100px" height="25">이메일</td>
-				<td>
-					<input type="text" name="mem_mail" value="" /> 
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>
-			<tr>
-				<td class="fieldName" width="100px" height="25">주소</td>
-				<td> 
-					<input type="text" name="mem_add1" id="mem_add1" value="" /> 
-					<input type="text" name="mem_add2" id="mem_add2" value="" />
-				</td>
-			</tr>
-			<tr><td class="tLine" colspan="2"></td></tr>
-			<tr>
-				<td class="fieldName" width="100px" height="25">직 업</td>
-				<td>
-					<input type="text" name="mem_job" value=""/>
-				</td>
-			</tr>
-			<tr><td colspan="2" height="20"></td></tr>				
-			<tr>
-				<td class="btnGroup" colspan="2" >
-					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit">수정하기</button>
-					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn2" type="reset">취소</button>
-					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn3" type="button">탈퇴</button>
-				</td>
-			</tr>
-		</table>
-	</form>
-</body>
+	<body>
+		<form name="memberView" method="post">
+			<table width="80%" border="0" cellpadding="0" cellspacing="0">
+				<tr><td class="tLine" colspan="2"></td></tr>
+				<tr>
+					<td class="fieldName" width="100px" height="25">성 명</td>
+					<td>
+						<input type="text" name="mem_name" value=""/>
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>	
+				<tr>
+					<td class="fieldName" width="100px" height="25">생년월일</td>
+					<td>
+						<input type="text" name="mem_bir" value=""/>
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>
+				
+				<tr>
+					<td class="fieldName" width="100px" height="25">아이디</td>
+					<td>
+						<input type="text" name="mem_id" value="">
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>
+				
+				<tr>
+					<td class="fieldName" width="100px" height="25">비밀번호</td>
+					<td>
+						<input type="text" name="mem_pass" value="" />
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>
+				<tr>
+					<td class="fieldName" width="100px" height="25">핸드폰</td>
+					<td>
+						<input type="text" name="mem_hp" value=""/>
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>
+				<tr>
+					<td class="fieldName" width="100px" height="25">이메일</td>
+					<td>
+						<input type="text" name="mem_mail" value="" /> 
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>
+				<tr>
+					<td class="fieldName" width="100px" height="25">주소</td>
+					<td> 
+						<input type="text" name="mem_add1" id="mem_add1" value="" /> 
+						<input type="text" name="mem_add2" id="mem_add2" value="" />
+					</td>
+				</tr>
+				<tr><td class="tLine" colspan="2"></td></tr>
+				<tr>
+					<td class="fieldName" width="100px" height="25">직 업</td>
+					<td>
+						<input type="text" name="mem_job" value=""/>
+					</td>
+				</tr>
+				<tr><td colspan="2" height="20"></td></tr>				
+				<tr>
+					<td class="btnGroup" colspan="2" >
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn1" type="submit">수정하기</button>
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn2" type="reset">취소</button>
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btn3" type="button">탈퇴</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 </html>

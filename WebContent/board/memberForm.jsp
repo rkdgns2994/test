@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입폼</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/validation.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/cookieControl.js"></script>
 <script type="text/javascript">
@@ -23,7 +24,7 @@
 		$(location).attr('href', '${pageContext.request.contextPath }/board/loginForm.jsp');
 	});
 
-	// 가입할 때 정규표현식 확인 절차 구현
+	// 가입할 때 정규표현식 확인 절차. 구현
 	$('form[name=memberForm]').submit(function(){
 			if(!$('input[name=mem_name]').val().validationNM()){
 				alert('성명을 바르게 입력해주세요.');
