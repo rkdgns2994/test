@@ -118,7 +118,6 @@
 		</select>
 		<input id = "search_keyword" name = "search_keyword" type="text" placeholder="검색어 입력..." class="form-control" />
 		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit">검색</button>
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="button">글쓰기</button>
 	</form>
 </div>
 </body>
