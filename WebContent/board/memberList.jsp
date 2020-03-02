@@ -89,8 +89,7 @@
 				<th class="mdl-data-table__cell--non-numeric">생년월일</th>
 				<th class="mdl-data-table__cell--non-numeric">직업</th>
 				<th class="mdl-data-table__cell--non-numeric">
-					<input id="allCheck" type="checkbox" onclick="allCheck(this);" value="All"/>
-					<button type="button" id="Delete" class="Delete" value="${memberInfo.getMem_id() }">강제탈퇴</button>
+					<input id="allCheck" type="checkbox" onclick="allCheck(this);" value="All"/>모두체크
 				</th>
 			</tr>
 		</thead>
@@ -118,6 +117,7 @@
 		</select>
 		<input id = "search_keyword" name = "search_keyword" type="text" placeholder="검색어 입력..." class="form-control" />
 		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit">검색</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="button" id="Delete" value="${memberInfo.getMem_id() }">강제탈퇴</button>
 	</form>
 </div>
 </body>
